@@ -2,7 +2,7 @@
 #	$NetBSD: Makefile,v 1.2 2001/03/04 14:50:05 mrg Exp $
 
 CURDIR=	${.CURDIR}
-S=	${CURDIR}/../../../..
+S=	${CURDIR}/deps
 
 #
 # Override normal settings
@@ -14,9 +14,9 @@ PROG?=		ofwboot
 NOMAN=		ja, man!
 
 .if ${PROG} == "ofwboot"
-SOFTRAID?=	yes
-.else
 SOFTRAID?=	no
+.else
+SOFTRAID?=	yes
 .endif
 
 .PATH:		${S}/arch/sparc64/sparc64
@@ -35,11 +35,14 @@ SRCS+=		aes_xts.c bcrypt_pbkdf.c blowfish.c explicit_bzero.c \
 		hmac_sha1.c pkcs5_pbkdf2.c rijndael.c sha1.c sha2.c softraid.c
 .endif
 
+SRCS+=		nfs.c rpc.c bootparam.c ufs.c ufs2.c
+
 CWARNFLAGS+=	-Wno-main
 AFLAGS+=	-x assembler-with-cpp -D_LOCORE -D__ELF__ -fno-pie 
 CFLAGS+=	${COPTS} -fno-pie -fno-stack-protector
 CPPFLAGS+=	-D_STANDALONE -DSUN4U -nostdinc
-#CPPFLAGS+=	-DNETIF_DEBUG 
+#CPPFLAGS+=	-DNETIF_DEBUG
+CPPFLAGS+=	-DNETBOOT
 
 BINMODE=	444
 
@@ -54,7 +57,44 @@ ENTRY=		_start
 
 CLEANFILES+=	sparc machine
 
-CPPFLAGS+=	-I${CURDIR}/../../.. -I${CURDIR}/../../../.. -I${CURDIR} -I.
+# Local libsa settings and build rule
+SADST?= ${.CURDIR}/deps/lib/libsa
+SALIB?= ${SADST}/libsa.a
+
+${SALIB}:
+	@echo Building local libsa
+	@rm -f ${SALIB}
+	@mkdir -p ${SADST}
+	@objs=""; \
+	for f in ${.CURDIR}/deps/lib/libsa/*.c ${.CURDIR}/deps/lib/libkern/divdi3.c ${.CURDIR}/deps/lib/libkern/qdivrem.c; do \
+		b=$${f##*/}; n=$${b%.c}; \
+		case "$${b}" in \
+			cd9660.c) \
+				continue ;; \
+			nfs.c|bootparam.c) \
+				continue ;; \
+			cons.c|putchar.c) \
+				continue ;; \
+			cread.c) \
+				continue ;; \
+			loadfile.c|loadfile_elf.c) \
+				continue ;; \
+			rpc.c) \
+				continue ;; \
+			softraid.c) \
+				continue ;; \
+			ufs.c|ufs2.c) \
+				continue ;; \
+		esac; \
+		${CC} ${CFLAGS} -ffreestanding -fno-builtin -nostdinc \
+			-I${.CURDIR} -I${.CURDIR}/deps -I${.CURDIR}/deps/include -I${.CURDIR}/deps/lib/libsa \
+			-D_STANDALONE -DCOMPAT_UFS -c $$f -o ${SADST}/$$n.o || exit 1; \
+		objs="$$objs ${SADST}/$$n.o"; \
+	done; \
+	${AR} rcs ${SALIB} $$objs; \
+	${RANLIB} ${SALIB}
+
+CPPFLAGS+=	-I${.CURDIR}/deps/include -I${CURDIR} -I.
 CPPFLAGS+=	-DRELOC=0x${RELOC}
 
 #
@@ -69,13 +109,12 @@ CPPFLAGS+=	-DSOFTRAID
 .if !make(clean) && !make(cleandir) && !make(includes) && !make(libdep) && \
     !make(sadep) && !make(salibdir) && !make(obj)
 .BEGIN:
-	@([ -h machine ] || ln -s ${.CURDIR}/../../include machine)
+	@([ -h machine ] || ln -s ${.CURDIR}/deps/include machine)
 .endif
 
-${PROG}: ${OBJS} ${LIBSA} ${LIBZ}
-	${LD} -N -Ttext ${RELOC} -e ${ENTRY} -o ${PROG} -nopie -znorelro \
-	    ${OBJS} -L${LIBSADIR} ${LIBSA} \
-	    -L${LIBZDIR} ${LIBZ}
+${PROG}: ${OBJS} ${SALIB}
+	${LD} -N -Ttext ${RELOC} -e ${ENTRY} -o ${PROG} --no-pie -znorelro \
+	    ${OBJS} -L${SADST} ${SALIB}
 
 NORMAL_S=	${CC} ${AFLAGS} ${CPPFLAGS} -c $<
 srt0.o: srt0.s
