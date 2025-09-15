@@ -1,0 +1,74 @@
+Copyright (c) 2002 Niels Provos <provos@citi.umich.edu>
+Copyright (c) 2005 Ryan McBride <mcbride@openbsd.org>
+Copyright (c) 1988, Julian Onions <Julian.Onions@nexor.co.uk>
+Copyright (C) 1994 by HOSOKAWA Tatsumi <hosokawa@mt.cs.keio.ac.jp>
+Copyright (c) 1996 Jason R. Thorpe <thorpej@and.com>
+Copyright (c) 1997, 1998, 1999, Kenneth D. Merry <ken@FreeBSD.ORG>
+Copyright (c) 1997, Stefan Esser <se@FreeBSD.ORG>
+Copyright (c) 1999,2000,2001 Jonathan Lemon <jlemon@FreeBSD.org>
+Copyright (c) 1999, 2000 Jason L. Wright (jason@thought.net)
+Copyright (c) 1999 Michael Smith <msmith@freebsd.org>
+Copyright (C) 2000, Jun-ichiro itojun Hagino <itojun@iijlab.net>.
+Copyright (c) 2000 Poul-Henning Kamp <phk@FreeBSD.org>
+Copyright (c) 2000 Ruslan Ermilov and Brian Somers <brian@Awfulhak.org>
+Copyright (c) 2000 SHIMIZU Ryo <ryo@misakimix.org>
+Copyright (c) 2001 Jean-Jacques Bernard-Gundol (jj@wabbitt.org)
+Copyright (c) 2001 Maxim Tsyplakov <tm@oganer.net>,
+Copyright (c) 2001 Mike Barcroft <mike@FreeBSD.org>
+Copyright (c) 2003, 2004  Marc espie <espie@openbsd.org>
+Copyright (c) 2003 Markus Friedl <markus@openbsd.org>
+Copyright (c) 2003 Mike Frantzen <frantzen@w4g.org>
+Copyright (c) 2004-2005 David Schultz <das@FreeBSD.ORG>
+Copyright (c) 2004 Aaron Campbell <aaron@openbsd.org>
+Copyright (c) 2004 Alexander Yurchenko <grange@openbsd.org>
+Copyright (c) 2006 Constantine A. Murenin <cnst+openbsd@bugmail.mojo.ru>
+Copyright (c) 2007 Artur Grabowski <art@openbsd.org>
+Copyright (c) 2008 Andrew Thompson <thompsa@FreeBSD.org>
+Copyright (c) 2008 Damien Bergamini <damien.bergamini@free.fr>
+Copyright (c) 2008 Joerg Goltermann <jg@osn.de>
+Copyright (c) 2008 Otto Moerbeek <otto@drijf.net>
+Copyright (c) 2008 Pierre-Yves Ritschard <pyr@spootnik.org>
+Copyright (c) 2009 Dariusz Swiderski <sfires@sfires.net>
+Copyright (c) 2009 Mark Kettenis <kettenis@openbsd.org>
+Copyright (c) 2009 Michele Marchetto <michele@openbsd.org>
+Copyright (c) 2009 Thordur I. Bjornsson. <thib@openbsd.org>
+Copyright (c) 2010 Claudio Jeker <claudio@openbsd.org>
+Copyright (c) 2010 Todd C. Miller <millert@openbsd.org>
+Copyright (c) 2011 Ariane van der Steldt <ariane@stack.nl>
+Copyright (c) 2011 Florian Obser <florian@narrans.de>
+Copyright (c) 2011 Philip Guenther <guenther@openbsd.org>
+Copyright (c) 2011 Sebastian Benoit <benoit-lists@fb12.de>
+Copyright (c) 2012 Joel Sing <jsing@openbsd.org>
+Copyright (c) 2013 Ted Unangst <tedu@openbsd.org>
+Copyright (c) 2014 Jonathan Matthew <jmatthew@openbsd.org>
+Copyright (c) 2014 Stefan Sperling <stsp@openbsd.org>
+Copyright (C) 2015-2020 Jason A. Donenfeld <Jason@zx2c4.com>.
+Copyright (c) 2015 Nicholas Marriott <nicm@openbsd.org>
+Copyright (c) 2015 Rafael Zalamena <rzalamena@openbsd.org>
+Copyright (c) 2015 Reyk Floeter <reyk@openbsd.org>
+Copyright (c) 2015 Theo de Raadt <deraadt@openbsd.org>
+Copyright (c) 2016,2017 Henning Brauer <henning@openbsd.org>
+Copyright (c) 2016 Alexandr Nedvedicky <sashan@openbsd.org>
+Copyright (c) 2016 Kazuya GODA <goda@openbsd.org>
+Copyright (c) 2016 Peter Hessler <phessler@openbsd.org>
+Copyright (c) 2018 Anton Lindqvist <anton@openbsd.org>
+Copyright (c) 2018 Patrick Wildt <patrick@blueri.se>
+Copyright (C) 2019-2020 Matt Dunwoodie <ncon@noconroy.net>
+Copyright (c) 2019 Martin Pieuchot <mpi@openbsd.org>
+Copyright (c) 2020-2024 Scott Cheloha <cheloha@openbsd.org>
+Copyright (c) 2020 Paul Irofti <paul@irofti.net>
+Copyright (c) 2020 Theo Buehler <tb@openbsd.org>
+Copyright (c) 2025 David Gwynne <dlg@openbsd.org>
+
+Permission to use, copy, modify, and distribute this software for any
+purpose with or without fee is hereby granted, provided that the above
+copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
