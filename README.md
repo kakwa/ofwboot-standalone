@@ -1,10 +1,19 @@
-# Custom ofwboot
+# Standalone ofwboot
 
-`ofwboot` build with tftp bootstrap to directly get a kernel from tftp
+`ofwboot` extracted from the OpenBSD source tree and tweaked to be built under Linux.
 
-## Prerequisites
+# Build
 
-- bmake
+## Checkout
+
+```bash
+git clone https://github.com/kakwa/ofwboot-standalone
+cd ofwboot-standalone
+```
+
+## Dependencies
+
+- `bmake`
 - SPARC64 cross toolchain: `gcc-sparc64-linux-gnu` and `binutils-sparc64-linux-gnu`
 
 Example (Debian/Ubuntu):
@@ -14,22 +23,18 @@ sudo apt-get update -y
 sudo apt-get install -y bmake gcc-sparc64-linux-gnu binutils-sparc64-linux-gnu
 ```
 
-## Build
+## Compilation
 
 From this directory:
 
 ```bash
 CC=sparc64-linux-gnu-gcc LD=sparc64-linux-gnu-ld bmake
+
+file ofwboot
 ```
 
 ## Clean
 
 ```bash
 bmake clean
-```
-
-## Test OFW version
-
-```bash
-CC=sparc64-linux-gnu-gcc LD=sparc64-linux-gnu-ld bmake -DKAKWAOFWTEST
 ```
