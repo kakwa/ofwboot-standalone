@@ -71,7 +71,7 @@
 #include "openfirm.h"
 
 #ifdef BOOT_DEBUG
-uint32_t	boot_debug = 0
+uint32_t	boot_debug = 1
 		    /* | BOOT_D_OFDEV */
 		    /* | BOOT_D_OFNET */
 		;
@@ -437,7 +437,13 @@ main(void)
 	char **bootlp;
 	char *just_bootline[2];
 
-	printf(">> OpenBSD BOOT %s\n", version);
+	printf(">> kakwa's OFWBOOT %s\n", version);
+
+#ifdef KAKWAOFWTEST
+    printf("\nthis is just a test OFW program\n");
+    printf(">>> exiting <<<\n");
+    exit();
+#endif
 
 	/*
 	 * Get the boot arguments from Openfirmware
@@ -446,7 +452,7 @@ main(void)
 	    OF_getprop(chosen, "bootpath", bootdev, sizeof bootdev) < 0 ||
 	    OF_getprop(chosen, "bootargs", bootline, sizeof bootline) < 0) {
 		printf("Invalid Openfirmware environment\n");
-		exit();
+        exit();
 	}
 
 #ifdef SOFTRAID

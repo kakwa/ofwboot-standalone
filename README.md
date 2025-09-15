@@ -38,3 +38,11 @@ file ofwboot
 ```bash
 bmake clean
 ```
+
+## Custom Test Boot
+
+To compile the test version displaying some info and exiting.
+
+```bash
+CC=sparc64-linux-gnu-gcc LD=sparc64-linux-gnu-ld bmake -DKAKWAOFWTEST
+```
